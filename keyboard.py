@@ -15,7 +15,6 @@ class Keyboard:
                 self.k['quit'] = True
 
         if pressed_keys[self.k['horizontal'][1][0]]:
-            print("test")
             self.k['horizontal'][0] = -1
         if pressed_keys[self.k['horizontal'][1][1]]:
             self.k['horizontal'][0] = 1
