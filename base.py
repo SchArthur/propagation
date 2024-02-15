@@ -1,6 +1,7 @@
 import pygame
 import ini_reader
 from playerClass import Player
+from keyboard import Keyboard
 
 pygame.init()
 
@@ -26,6 +27,7 @@ p2Axis = {'vertical':[0, [pygame.K_UP, pygame.K_DOWN]], 'horizontal':[0, [pygame
 
 p1StartPos = [round((size.x/tilesize)/8), round((size.y/tilesize)/8)]
 p2StartPos = [round(size.x/tilesize)-round((size.x/tilesize)/8), round(size.y/tilesize)-round((size.y/tilesize)/8)]
+
 playerOne = Player(p1StartPos, playerOneColor, screen, 5, p1Axis) #création d'instances de la classe player
 playerTwo = Player(p2StartPos, playerTwoColor, screen, 5, p2Axis)
 
@@ -44,13 +46,28 @@ while running:
         quit.append(player.k["quit"])
         player.draw(tilesize)
         player.dt += dtGlobal
-        player.getKeys()
     
     for i in range(len(quit)-1):
         if quit[i] != quit[i+1]:
             running = False
     if len(quit) == 1 and quit[0] == True:
         running = False
+
+
+    for player in players:
+        player.k = Keyboard(player.k).get()
+        if player.dt >= 1000/player.sp and (player.k["vertical"][0] != 0 or player.k["horizontal"][0] != 0):
+            player.dt = 0
+            player.p.x += player.k["vertical"][0]
+            player.p.y += player.k["horizontal"][0]
+
+
+    for event in pygame.event.get():
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                playerOne.k['quit'] = True
+
+
 
 
     pygame.display.flip()
