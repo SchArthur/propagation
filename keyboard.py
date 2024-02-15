@@ -18,7 +18,6 @@ class Keyboard:
             self.k['horizontal'][0] = -1
         if pressed_keys[self.k['horizontal'][1][1]]:
             self.k['horizontal'][0] = 1
-            print("test")
         if pressed_keys[self.k['vertical'][1][0]]:
             self.k['vertical'][0] = -1
         if pressed_keys[self.k['vertical'][1][1]]:

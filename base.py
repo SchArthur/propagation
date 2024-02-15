@@ -53,7 +53,6 @@ while running:
     if len(quit) == 1 and quit[0] == True:
         running = False
 
-
     for player in players:
         player.k = Keyboard(player.k).get()
         if player.dt >= 1000/player.sp and (player.k["vertical"][0] != 0 or player.k["horizontal"][0] != 0):
@@ -64,14 +63,10 @@ while running:
             if player.k['quit'] == True:
                 running = False
 
-
     for event in pygame.event.get():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 playerOne.k['quit'] = True
-
-
-
 
     pygame.display.flip()
 pygame.quit()
