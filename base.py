@@ -61,6 +61,9 @@ while running:
             player.p.x += player.k["vertical"][0]
             player.p.y += player.k["horizontal"][0]
 
+            if player.k['quit'] == True:
+                running = False
+
 
     for event in pygame.event.get():
         for event in pygame.event.get():

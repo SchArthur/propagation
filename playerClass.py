@@ -1,5 +1,4 @@
 import pygame
-from keyboard import Keyboard
 
 class Player:
 
@@ -9,7 +8,6 @@ class Player:
         self.s = screen
         self.sp = speed
         self.k = keys
-        self.keyboard = Keyboard(self.k)
         self.dt = 1000
 
     def draw(self, tilesize):
